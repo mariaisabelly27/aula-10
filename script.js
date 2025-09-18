@@ -1,31 +1,41 @@
-.magia-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 999;
-}
+document.addEventListener('DOMContentLoaded', function () {
+    // Botão encantado de acessibilidade
+    const botaoEncantado = document.getElementById('botao-acessibilidade');
+    const opcoesEncantadas = document.getElementById('opcoes-acessibilidade');
 
-.magia {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-image: url('img/estrela.png'); /* imagem de estrela ou brilho */
-    background-size: cover;
-    animation: flutuar 6s linear infinite;
-    opacity: 0.8;
-}
+    botaoEncantado.addEventListener('click', function () {
+        botaoEncantado.classList.toggle('rotacao-botao');
+        opcoesEncantadas.classList.toggle('apresenta-lista');
 
-@keyframes flutuar {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
+        const estaAberto = botaoEncantado.getAttribute('aria-expanded') === 'true';
+        botaoEncantado.setAttribute('aria-expanded', !estaAberto);
+    });
+
+    // Magia para aumentar e diminuir a fonte
+    const feitiçoAumentarFonte = document.getElementById('aumentar-fonte');
+    const feitiçoDiminuirFonte = document.getElementById('diminuir-fonte');
+    const feitiçoContraste = document.getElementById('alterna-contraste');
+
+    let tamanhoFonteAtual = 1;
+
+    feitiçoAumentarFonte.addEventListener('click', function () {
+        tamanhoFonteAtual += 0.1;
+        document.body.style.fontSize = `${tamanhoFonteAtual}rem`;
+    });
+
+    feitiçoDiminuirFonte.addEventListener('click', function () {
+        tamanhoFonteAtual -= 0.1;
+        document.body.style.fontSize = `${tamanhoFonteAtual}rem`;
+    });
+
+    // Encantamento de contraste mágico
+    feitiçoContraste.addEventListener('click', function () {
+        document.body.classList.toggle('alto-contraste');
+    });
+});
+
+// Revelações mágicas com ScrollReveal ✨
+ScrollReveal().reveal('#inicio', { delay: 500, distance: '50px', origin: 'bottom' });
+ScrollReveal().reveal('#tropicalia', { delay: 500, distance: '50px', origin: 'left' });
+ScrollReveal().reveal('#galeria', { delay: 500, distance: '50px', origin: 'right' });
+ScrollReveal().reveal('#contato', { delay: 500, distance: '50px', origin: 'top' });
